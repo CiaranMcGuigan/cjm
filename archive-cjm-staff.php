@@ -21,38 +21,46 @@ get_header();
 			</header><!-- .page-header -->
 
 
-
+<!-- Administrative Section -->
 	<?php
 	$args = array(
-		'post_type' => 'cjm-work',
+		'post_type' => 'cjm-staff',
 		'posts_per_page' => -1,
 		'tax_query' => array(
 			array(
 				'taxonomy' => 'cjm-staff-category',
-				'field'    => 'slug',                     //different ways for wordpress to lookup the post 
-				'terms'	   => 'faculty'
+				'field'    => 'slug',                   
+				'terms'	   => 'administrative'
 			)
 		)
 	);
 	$query = new WP_Query($args);
-	if($query -> have_posts()){
-		echo "<section class='work-section'><h2>Web</h2>";
-		while($query -> have_posts()){
-			$query -> the_post();
-
-			echo '<article class="work-item">';
-				echo '<a href="'. get_permalink() .'">';
-					echo '<h2>'. get_the_title() .'</h2>';
-					the_post_thumbnail('large');
-				echo '</a>';
-				the_excerpt();
-			echo '</article>';
-		}
-		wp_reset_postdata();
-		echo "</section>";
-	}
-	?>
-	<?php
+	if($query -> have_posts()) : ?>
+        <section class="staff-wrapper">
+            <h2>Administrative</h2>
+        <?php	while($query -> have_posts()):
+                $query -> the_post();
+                echo '<article class="work-item">';
+                echo '<h3>'. get_the_title() .'</h3>';
+                
+                    //statement for ACF fields
+                    if(function_exists('get_field')) :
+                        if(get_field('description')) : ?>
+                            <p><?php the_field('description');?><p>
+                            <?php if(get_field('courses') && get_field('link')) : ?>  <!-- Only display these if the ACF fields exists -->
+                                    <p><?php the_field('courses'); ?></p>
+                                    <a href="<?php the_field('link');?>">Instructor Website</a>
+                            <?php endif;
+                    echo '</article>';		
+                        endif; //ACF Description if statement
+                    endif; //acf main if statement    
+                endwhile; //while loop for content
+            wp_reset_postdata(); ?>
+        </section>
+<?php endif; ?>
+    
+<!-- Faculty Section -->
+<?php
 
 	$args = array(
 		'post_type' => 'cjm-staff',
@@ -60,29 +68,35 @@ get_header();
 		'tax_query' => array(
 			array(
 				'taxonomy' => 'cjm-staff-category',
-				'field'    => 'slug',                     //different ways for wordpress to lookup the post 
-				'terms'	   => 'administrative'
+				'field'    => 'slug',                   
+				'terms'	   => 'faculty'
 			)
 		)
 	);
 	$query = new WP_Query($args);
-	if($query -> have_posts()){
-		echo "<section class='work-section'><h2>Photo</h2>";
-		while($query -> have_posts()){
-			$query -> the_post();
-			echo '<article class="work-item">';
-				echo '<a href="'. get_permalink() .'">';
-					echo '<h2>'. get_the_title() .'</h2>';
-					the_post_thumbnail('large');
-				echo '</a>';
-				the_excerpt();
-			echo '</article>';
-		}
-		wp_reset_postdata();
-		echo "</section>";
-	}
-	?>
-
+	if($query -> have_posts()) : ?>
+        <section class="staff-wrapper">
+            <h2>Faculty</h2>
+        <?php	while($query -> have_posts()):
+                $query -> the_post();
+                echo '<article class="work-item">';
+                echo '<h3>'. get_the_title() .'</h3>';
+                
+                    //statement for ACF fields
+                    if(function_exists('get_field')) :
+                        if(get_field('description')) : ?>
+                            <p><?php the_field('description');?><p>
+                            <?php if(get_field('courses') && get_field('link')) : ?>  <!-- Only display these if the ACF fields exists -->
+                                    <p><?php the_field('courses'); ?></p>
+                                    <a href="<?php the_field('link');?>">Instructor Website</a>
+                            <?php endif;
+                    echo '</article>';		
+                        endif; //ACF Description if statement
+                    endif; //acf main if statement    
+                endwhile; //while loop for content
+            wp_reset_postdata(); ?>
+        </section>
+<?php endif; ?>
 	
 	</main><!-- #primary -->
 <?php

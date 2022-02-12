@@ -2,7 +2,7 @@
 
 function cjm_register_custom_post_types() {
     
-    // Register Staffs
+    // Register Staff CPT
     $labels = array(
         'name'                  => _x( 'Staff', 'post type general name' ),
         'singular_name'         => _x( 'Member', 'post type singular name'),
