@@ -197,4 +197,14 @@ function cjm_excerpt_more($more){
 }
 add_filter('excerpt_more', 'cjm_excerpt_more');
 
+function cjm_post_filter( $use_block_editor, $post ) {
 
+    $page_ids = array( 89 );
+    if ( in_array( $post->ID, $page_ids ) ) {
+        return false;
+    } else {
+        return $use_block_editor;
+		
+    }
+}
+add_filter( 'use_block_editor_for_post', 'cjm_post_filter', 89, 2 );
