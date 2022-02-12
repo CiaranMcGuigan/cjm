@@ -176,3 +176,16 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+//change excerpt length to 20 words
+function cjm_excerpt_length($length){
+	$new_length = $length - 35;
+	return $new_length;
+}
+add_filter('excerpt_length', 'cjm_excerpt_length', 999);
+
+//change excerpt 'more' link to a text
+function cjm_excerpt_more($more){
+	$more = '... <a class="read-more" href="'. get_permalink() .'">Continue Reading</a>';
+	return $more;
+}
+add_filter('excerpt_more', 'cjm_excerpt_more');
