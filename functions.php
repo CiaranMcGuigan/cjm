@@ -169,6 +169,8 @@ require get_template_directory() . '/inc/template-functions.php';
  */
 require get_template_directory() . '/inc/customizer.php';
 
+require get_template_directory() . '/inc/cpt-taxonomy.php';
+
 /**
  * Load Jetpack compatibility file.
  */
@@ -193,4 +195,4 @@ function cjm_excerpt_more($more){
 }
 add_filter('excerpt_more', 'cjm_excerpt_more');
 
-require get_template_directory() . '/inc/cpt-taxonomy.php';
+
