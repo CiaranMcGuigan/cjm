@@ -192,3 +192,5 @@ function cjm_excerpt_more($more){
 	return $more;
 }
 add_filter('excerpt_more', 'cjm_excerpt_more');
+
+require get_template_directory() . '/inc/cpt-taxonomy.php';
