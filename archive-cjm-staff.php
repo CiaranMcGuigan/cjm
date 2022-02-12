@@ -21,7 +21,7 @@ get_header();
 			</header><!-- .page-header -->
 
 
-<!-- Administrative Section -->
+<!--------------- Administrative Section ---------------->
 	<?php
 	$args = array(
 		'post_type' => 'cjm-staff',
@@ -40,16 +40,15 @@ get_header();
             <h2>Administrative</h2>
         <?php	while($query -> have_posts()):
                 $query -> the_post();
-                echo '<article class="work-item">';
+                echo '<article class="staff-member">';
                 echo '<h3>'. get_the_title() .'</h3>';
-                
                     //statement for ACF fields
                     if(function_exists('get_field')) :
                         if(get_field('description')) : ?>
-                            <p><?php the_field('description');?><p>
-                            <?php if(get_field('courses') && get_field('link')) : ?>  <!-- Only display these if the ACF fields exists -->
-                                    <p><?php the_field('courses'); ?></p>
-                                    <a href="<?php the_field('link');?>">Instructor Website</a>
+                            <p><?php the_field('description');?><p>       
+                    <?php if(get_field('courses') && get_field('link')) : ?>  <!-- Only display these if the ACF fields exists -->
+                            <p><?php the_field('courses'); ?></p>
+                            <a href="<?php the_field('link');?>">Instructor Website</a>
                             <?php endif;
                     echo '</article>';		
                         endif; //ACF Description if statement
@@ -58,8 +57,8 @@ get_header();
             wp_reset_postdata(); ?>
         </section>
 <?php endif; ?>
-    
-<!-- Faculty Section -->
+ 
+<!--------------- Faculty Section------------- -->
 <?php
 
 	$args = array(
@@ -79,17 +78,16 @@ get_header();
             <h2>Faculty</h2>
         <?php	while($query -> have_posts()):
                 $query -> the_post();
-                echo '<article class="work-item">';
+                echo '<article class="staff-member">';
                 echo '<h3>'. get_the_title() .'</h3>';
-                
                     //statement for ACF fields
                     if(function_exists('get_field')) :
                         if(get_field('description')) : ?>
                             <p><?php the_field('description');?><p>
-                            <?php if(get_field('courses') && get_field('link')) : ?>  <!-- Only display these if the ACF fields exists -->
-                                    <p><?php the_field('courses'); ?></p>
-                                    <a href="<?php the_field('link');?>">Instructor Website</a>
-                            <?php endif;
+                    <?php if(get_field('courses') && get_field('link')) : ?>  <!-- Only display these if the ACF fields exists -->
+                            <p><?php the_field('courses'); ?></p>
+                            <a href="<?php the_field('link');?>">Instructor Website</a>
+                    <?php endif;
                     echo '</article>';		
                         endif; //ACF Description if statement
                     endif; //acf main if statement    
@@ -97,7 +95,6 @@ get_header();
             wp_reset_postdata(); ?>
         </section>
 <?php endif; ?>
-	
 	</main><!-- #primary -->
 <?php
 get_footer();
