@@ -49,7 +49,9 @@ function cjm_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'cjm' ),
+			'header' => esc_html__( 'Header Menu Location', 'cjm' ),
+			'footer' => esc_html__('Footer Menu Location', 'cjm'),
+			
 		)
 	);
 
@@ -169,6 +171,8 @@ require get_template_directory() . '/inc/template-functions.php';
  */
 require get_template_directory() . '/inc/customizer.php';
 
+require get_template_directory() . '/inc/cpt-taxonomy.php';
+
 /**
  * Load Jetpack compatibility file.
  */
@@ -192,3 +196,5 @@ function cjm_excerpt_more($more){
 	return $more;
 }
 add_filter('excerpt_more', 'cjm_excerpt_more');
+
+
