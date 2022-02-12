@@ -19,7 +19,7 @@ function cjm_register_custom_post_types() {
         'not_found'             => __( 'No Staff found.' ),
         'not_found_in_trash'    => __( 'No Staff found in Trash.' ),
         'archives'              => __( 'Staff Archives'),
-        'insert_into_item'      => __( 'Insert into Member'),
+        'insert_into_item'      => __( 'Insert into member'),
         'uploaded_to_this_item' => __( 'Uploaded to this Member'),
         'filter_item_list'      => __( 'Filter Staff list'),
         'items_list_navigation' => __( 'Staff list navigation'),
@@ -44,7 +44,7 @@ function cjm_register_custom_post_types() {
         'capability_type'    => 'post',
         'has_archive'        => true,
         'hierarchical'       => false,
-        'menu_position'      => 5,
+        'menu_position'      => 2,
         'menu_icon'          => 'dashicons-archive',
         'supports'           => array( 'title'),
     );

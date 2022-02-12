@@ -49,7 +49,9 @@ function cjm_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'cjm' ),
+			'header' => esc_html__( 'Header Menu Location', 'cjm' ),
+			'footer' => esc_html__('Footer Menu Location', 'cjm'),
+			
 		)
 	);
 
