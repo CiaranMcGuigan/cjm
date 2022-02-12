@@ -30,7 +30,7 @@ get_header();
 			array(
 				'taxonomy' => 'cjm-staff-category',
 				'field'    => 'slug',                     //different ways for wordpress to lookup the post 
-				'terms'	   => 'Faculty'
+				'terms'	   => 'faculty'
 			)
 		)
 	);
@@ -61,7 +61,7 @@ get_header();
 			array(
 				'taxonomy' => 'cjm-staff-category',
 				'field'    => 'slug',                     //different ways for wordpress to lookup the post 
-				'terms'	   => 'Administrative'
+				'terms'	   => 'administrative'
 			)
 		)
 	);
