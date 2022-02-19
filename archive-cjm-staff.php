@@ -36,8 +36,8 @@ get_header();
 	);
 	$query = new WP_Query($args);
 	if($query -> have_posts()) : ?>
+        <h2 class="staff-title">Administrative</h2>
         <section class="staff-wrapper">
-            <h2>Administrative</h2>
         <?php	while($query -> have_posts()):
                 $query -> the_post();
                 echo '<article class="staff-member">';
@@ -74,8 +74,8 @@ get_header();
 	);
 	$query = new WP_Query($args);
 	if($query -> have_posts()) : ?>
-        <section class="staff-wrapper">
-            <h2>Faculty</h2>
+        <h2 class="staff-title">Faculty</h2>
+        <section class="staff-wrapper"> 
         <?php	while($query -> have_posts()):
                 $query -> the_post();
                 echo '<article class="staff-member">';

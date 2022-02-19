@@ -20,7 +20,7 @@
 	</header><!-- .entry-header -->
 
 	<?php the_post_thumbnail( 'arch-students' ); ?>
-	<div class="entry-content">
+	<div class="entry-content-single">
 		<?php
 		the_content();
 		?>

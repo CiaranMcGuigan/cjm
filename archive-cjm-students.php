@@ -40,16 +40,16 @@ get_header();
 		<section class="student-wrapper">
         <?php	while($query -> have_posts()):
                 $query -> the_post();
-                echo '<article class="staff-member">';
+                echo '<article class="student-member">';
 				echo '<a href="'. get_permalink() .'">';
-				echo '<h2>'. get_the_title() .'</h2>';
+				echo '<h2 >'. get_the_title() .'</h2>';
 				the_post_thumbnail('arch-students');
 				echo '</a>';
 				echo '<p>' . the_excerpt() . '</p>';
 				//loop to get taxonomy category
 				foreach (get_the_terms(get_the_ID(), 'cjm-student-category') as $category) {
 					echo '<span>Specialty: </span>';
-					echo '<a href="'. get_term_link($category) .'">';
+					echo '<a class="student-type" href="'. get_term_link($category) .'">';
 					echo $category->name;
 					echo '</a>';
 				 }

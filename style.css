@@ -69,6 +69,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 html {
 	line-height: 1.15;
 	-webkit-text-size-adjust: 100%;
+	
 }
 
 /* Sections
@@ -79,6 +80,7 @@ html {
  */
 body {
 	margin: 0;
+	
 }
 
 /**
@@ -86,6 +88,8 @@ body {
  */
 main {
 	display: block;
+	min-height: 100vh;
+	
 }
 
 /**
@@ -419,6 +423,7 @@ h6 {
 
 p {
 	margin-bottom: 1.5em;
+	font-family: 'Roboto', sans-serif;
 }
 
 dfn,
@@ -473,6 +478,8 @@ big {
 --------------------------------------------- */
 body {
 	background: #fff;
+	height: 100vh;
+	overflow-x: hidden;
 }
 
 hr {
@@ -530,6 +537,66 @@ table {
 	width: 100%;
 }
 
+/* =====================================header============================ */
+
+.site-header {
+	width: 100%;
+	height: 55px;
+	background-color: #000000;
+	border-top: 3px solid #305c9f;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
+
+.admin-bar .site-header {
+	top: 46px;
+}
+
+@media screen and (min-width: 782px) {
+	.admin-bar .site-header {
+		top: 32px;
+	}
+}
+
+.site-header .site-title {
+	width: 200px;
+	font-size: 1.3em;
+	text-transform:uppercase;
+	margin: .4rem 1rem 0;
+}
+
+.site-header .site-title a {
+	display: block;
+	color:#fff;
+}
+
+.site-header .site-title a {
+	text-decoration: none;
+}
+
+@media screen and (min-width: 50em) {
+	.site-header {
+		display: grid;
+		grid-template-columns: 1fr minmax(auto, 12.5rem) minmax(auto, 50rem) 1fr;
+		align-items: center;
+	}
+	.site-header .site-title {
+		grid-column: 2/3;
+		margin: 0 1rem 0;
+	}
+}
+
+/* =================================footer========================= */
+.site-footer {
+    background-color: #333;
+    margin-top: 20px;
+    padding: 1rem;
+    font-size: .875rem;
+    color: #fff;
+    text-align: center;
+}
 /* Links
 --------------------------------------------- */
 a {
@@ -641,15 +708,38 @@ textarea {
 # Layouts
 --------------------------------------------------------------*/
 
+.site-main{
+	padding: 0 1rem;
+	margin: 6rem 0;
+}
+
 /*--------------------------------------------------------------
 # Components
 --------------------------------------------------------------*/
+
+/* =================================SideBar================== */
+.widget-area{
+	padding: 1rem 3rem;
+	background-color: rgb(231, 231, 231);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.wp-block-search__inside-wrapper{
+	width: 100%;
+}
 
 /* Navigation
 --------------------------------------------- */
 .main-navigation {
 	display: block;
 	width: 100%;
+	position: absolute;
+	top: 52px;
+	right: 0;
+	z-index: 1000;
 }
 
 .main-navigation ul {
@@ -657,63 +747,124 @@ textarea {
 	list-style: none;
 	margin: 0;
 	padding-left: 0;
-}
-
-.main-navigation ul ul {
-	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-	float: left;
-	position: absolute;
-	top: 100%;
-	left: -999em;
-	z-index: 99999;
-}
-
-.main-navigation ul ul ul {
-	left: -999em;
-	top: 0;
-}
-
-.main-navigation ul ul li:hover > ul,
-.main-navigation ul ul li.focus > ul {
-	display: block;
-	left: auto;
-}
-
-.main-navigation ul ul a {
-	width: 200px;
-}
-
-.main-navigation ul li:hover > ul,
-.main-navigation ul li.focus > ul {
-	left: auto;
+	background-color: #000000;
 }
 
 .main-navigation li {
 	position: relative;
 }
 
-.main-navigation a {
-	display: block;
-	text-decoration: none;
+.main-navigation li.current-menu-item > a,
+.main-navigation li.current_page_item > a,
+.main-navigation li:hover > a,
+.main-navigation li.focus > a {
+	background-color: #305c9f;
 }
 
-/* Small menu. */
-.menu-toggle,
+.main-navigation a {
+	padding: 1rem;
+	display: block;
+	font-size: 0.9em;
+	text-decoration: none;
+	text-align: center;
+	font-weight: 700;
+	color: white;
+	text-transform: uppercase;
+}
+
 .main-navigation.toggled ul {
 	display: block;
 }
 
-@media screen and (min-width: 37.5em) {
+.main-navigation ul ul {
+	background-color: #3d3d3d;
+}
 
+.menu-toggle {
+    display: block;
+    width: 46px;
+    height: 46px;
+    margin: 0;
+    padding: 0;
+    font-size: 0.9em;
+    color: #fff;
+    position: absolute;
+    right: 1rem;
+    z-index: 1100;
+    top: -3rem;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+    text-decoration: none;
+    cursor: pointer;
+    background: transparent;
+}
+
+.menu-toggle svg path {
+	fill: currentColor;
+}
+
+@media screen and (min-width: 50em) {
 	.menu-toggle {
 		display: none;
 	}
+	
+	.main-navigation {
+		width: auto;
+		position: relative;
+		top: 0;
+		align-self: center;
+		margin-left: auto;
+		height: 52px;
+	    line-height: 52px;
+	}
 
-	.main-navigation ul {
+	.main-navigation a {
+		padding: 0 1rem;
+	}
+
+	.main-navigation ul,
+	.main-navigation.toggled ul {
 		display: flex;
+		justify-content: center;
+	}
+
+	.main-navigation ul ul {
+		box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+		float: left;
+		position: absolute;
+		top: 100%;
+		left: -999em;
+		z-index: 99999;
+		background-color: #111;
+		flex-direction: column;
+	}
+	
+	.main-navigation ul ul a {
+		left: -999em;
+		top: 0;
+		width: 200px;
+		text-align: left;
+	}
+
+	.main-navigation ul ul a:hover {
+	    background-color: #305c9f;
+	}
+
+	.main-navigation ul ul li:hover > ul,
+	.main-navigation ul ul li.focus > ul {
+		left: 100%;
+		top: 0;
+	}
+	
+	.main-navigation ul li:hover > ul,
+	.main-navigation ul li.focus > ul {
+		left: auto;
 	}
 }
 
+
+/* Comments & Paging Navigation */
 .site-main .comment-navigation,
 .site-main
 .posts-navigation,
@@ -988,4 +1139,192 @@ textarea {
 		margin-right: -150px;
 		margin: 0 auto;
 	}
+}
+
+/* ======================Front Page====================*/
+.wp-block-columns{
+	width: 70%;
+	margin: 0 auto;
+}
+.home-blog{
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row-reverse;
+	width: 100%;
+	position: relative;
+	justify-content: space-evenly;
+}
+.home-blog h2{
+	position: absolute;
+	left: 0;
+}
+.news-container{
+	margin: 6rem 0;
+	position: relative;
+	
+}
+
+.news-container h3{
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	position: absolute;
+	top: 50%;
+	right: 0%;
+	transform: translate(-50%, -50%);
+	color: white;
+	max-width: 100%;
+	padding: 1rem 3rem;
+	text-align: center;
+	border-radius: 5px;
+	background-color: #0000005e;
+}
+
+/* ============================blog=============================== */
+.entry-meta {
+	margin-bottom: .5rem;
+}
+
+h2.entry-title {
+	margin-bottom: 0.5rem;
+}
+
+.post-thumbnail img {
+	display: block;
+}
+
+.post a.post-thumbnail img {
+	max-height: 400px;
+	object-fit: cover;
+}
+
+span.cat-links,
+span.tags-links,
+span.comments-link {
+	display: block;
+}
+
+@media only screen and (min-width:50rem) {
+	span.cat-links,
+	span.tags-links,
+	span.comments-link {
+		display: inline-block;
+		margin-right: 3rem;
+	}
+}
+
+/* ===============================Staff============================= */
+.staff-wrapper{
+	display: block;
+}
+
+.staff-member {
+	padding: 1rem;
+}
+
+.staff-title {
+	margin: 3rem 0 0;
+	text-decoration: underline;
+}
+@media screen and (min-width: 50em) {
+	.staff-wrapper{
+		display: flex;
+		max-width: 100%;
+	}
+	}
+/* =============================Schedule =====================*/
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 300px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.styled-table thead tr {
+    background-color: #004f98;
+    color: #ffffff;
+    text-align: left;
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #004f98;;
+}
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #004f98;;
+}
+
+
+/* ============================Students Archive===================== */
+.student-wrapper{
+	display: block;
+
+}
+
+
+.student-member{
+	text-align: center;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	width: 100%;
+	height: 550px;
+}
+
+@media screen and (min-width: 50em) {
+	.student-wrapper{
+		display: flex;
+		gap: 1rem 2rem;
+		width: 100%;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	.student-member{
+		width: 30%;
+		height: 550px;
+	}
+}
+
+
+/* ===================================Student Type Page=========================== */
+.student-type {
+	width: 100%;
+	justify-content: center;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.student-taxonomy-type{
+	margin: 5rem 0 0;
+	width: 50%;
+	text-align: center;
+	padding: 0 3rem;
+}
+
+.student-taxonomy-type p{
+	word-wrap: break-word;
+}
+
+.student-taxonomy-type a {
+	color: blue;
+}
+
+
+/* ==========================================Single Page============================= */
+.cjm-students {
+margin: 20rem auto 0;
+text-align: center;
+width: 50%;
+min-height: 100%;
+	
 }

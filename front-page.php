@@ -39,10 +39,10 @@ get_header();
 						<h2>Recent News</h2>
 				<?php	while($blog_query -> have_posts()) :
 							$blog_query -> the_post(); ?>
-							<article>
+							<article class="news-container">
 								<a href="<?php the_permalink();?>">
-									<h3><?php the_title(); ?></h3>
-								<?php the_post_thumbnail('recent-news'); ?>
+								<?php the_post_thumbnail('medium'); ?>
+								<h3 class="news-card"><?php the_title(); ?></h3>
 								</a>
 							</article>
 						<?php endwhile;
