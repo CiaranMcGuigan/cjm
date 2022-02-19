@@ -192,10 +192,20 @@ add_filter('excerpt_length', 'cjm_excerpt_length', 999);
 
 //change excerpt 'more' link to a text
 function cjm_excerpt_more($more){
-	$more = '... <a class="read-more" href="'. get_permalink() .'">Continue Reading</a>';
+	global $post;
+	if ( $post->post_type == 'cjm-students'){
+	$more = '... <a class="read-more" href="'. get_permalink() .'">Read more about the student...</a>';
+	}
 	return $more;
 }
 add_filter('excerpt_more', 'cjm_excerpt_more');
+
+//Changing excerpt length
+function my_excerpt_length($length){
+	$length = 25;
+	return $length;
+	}
+	add_filter('excerpt_length', 'my_excerpt_length', 999);
 
 function cjm_post_filter( $use_block_editor, $post ) {
 
@@ -208,3 +218,27 @@ function cjm_post_filter( $use_block_editor, $post ) {
     }
 }
 add_filter( 'use_block_editor_for_post', 'cjm_post_filter', 89, 2 );
+
+
+// Add Block Templates to Students
+function cjm_register_student_post_type() {
+	$post_type_object = get_post_type_object( 'cjm-students' );
+	$post_type_object->template = array(
+		array( 
+			'core/paragraph', 
+			array( 
+				'placeholder' => 'Add description about student here...'
+			) 
+		),
+		array( 
+			'core/button', 
+			array(
+				'url'       => 'https://bcitwebdeveloper.ca/',
+			)
+		),
+
+		
+	);
+	$post_type_object->template_lock = 'all';
+}
+add_action( 'init', 'cjm_register_student_post_type' );
