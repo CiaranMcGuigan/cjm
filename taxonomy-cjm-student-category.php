@@ -27,7 +27,7 @@ get_header();
 					<a href="<?php the_permalink(); ?> ">
 						<h2><?php the_title(); ?></h2>
                     </a>
-						<?php the_post_thumbnail( 'medium' ); ?>
+						<?php the_post_thumbnail( 'tax-students' ); ?>
                         <?php the_content(); ?>
 					
 				</article>

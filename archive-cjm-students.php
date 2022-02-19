@@ -43,7 +43,7 @@ get_header();
                 echo '<article class="staff-member">';
 				echo '<a href="'. get_permalink() .'">';
 				echo '<h2>'. get_the_title() .'</h2>';
-				the_post_thumbnail('medium');
+				the_post_thumbnail('arch-students');
 				echo '</a>';
 				echo '<p>' . the_excerpt() . '</p>';
 				//loop to get taxonomy category
