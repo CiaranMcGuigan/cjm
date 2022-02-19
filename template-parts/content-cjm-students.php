@@ -19,7 +19,7 @@
 		endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php cjm_post_thumbnail(); ?>
+	<?php the_post_thumbnail( 'arch-students' ); ?>
 	<div class="entry-content">
 		<?php
 		the_content();

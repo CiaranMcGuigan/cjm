@@ -46,6 +46,9 @@ function cjm_setup() {
 		*/
 	add_theme_support( 'post-thumbnails' );
 
+	add_image_size('tax-students', 200, 300, true);
+	add_image_size('arch-students', 300, 257, true);
+
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
