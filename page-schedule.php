@@ -29,7 +29,7 @@ get_header();
                     <p><?php the_field('description'); ?></p>
                 
                     <?php if( have_rows('schedule') ): ?>
-                        <table>
+                        <table class="styled-table">
                             <thead>
                                 <tr>
                                     <td>Date</td>
@@ -38,7 +38,7 @@ get_header();
                                 </tr>
                             </thead>
                             <?php while ( have_rows('schedule') ) : the_row(); ?>
-                                <tr>
+                                <tr class="active-row">
                                     <td><?php the_sub_field('date'); ?></td>
                                     <td><?php the_sub_field('course'); ?></td>
                                     <td><?php the_sub_field('instructor'); ?></td>

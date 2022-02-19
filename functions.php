@@ -49,6 +49,12 @@ function cjm_setup() {
 	add_image_size('tax-students', 200, 300, true);
 	add_image_size('arch-students', 300, 257, true);
 
+	wp_enqueue_style( 
+		'cjm-google-fonts', 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Roboto&display=swap	',
+		array(),
+		null				
+	);
+
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
